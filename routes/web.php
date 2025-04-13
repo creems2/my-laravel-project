@@ -1,10 +1,19 @@
-<?php
-
-use App\Http\Controllers\FormProcessor;
 use Illuminate\Support\Facades\Route;
 
-// Маршрут для отображения формы (метод GET)
-Route::get('/userform', [FormProcessor::class, 'index']);
+Route::get('/', function () {
+    return view('home', [
+        'name' => 'Иван',
+        'age' => 20,
+        'position' => 'Разработчик',
+        'address' => 'Москва, ул. Пушкина'
+    ]);
+});
 
-// Маршрут для обработки формы (метод POST)
-Route::post('/store_form', [FormProcessor::class, 'store']);
+Route::get('/contacts', function () {
+    return view('contacts', [
+        'address' => 'г. Казань',
+        'post_code' => '420111',
+        'email' => '', // пусто для проверки условия
+        'phone' => '+7-999-123-45-67'
+    ]);
+});
